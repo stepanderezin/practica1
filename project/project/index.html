@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DDURA SOFT WEAR</title>
+</head>
+
+
+<body bgcolor=2F353B body text=F5F5F5>
+    <p align=center>
+        <img src="zagalovokk.png" />
+        <p align=center> <text><tt><font size=5> <3 магазин повседневной одежды для гиков <3 </font></tt></text> </p>
+    </p>
+    <hr noshade color=A2ADD0>
+    <img src="katalog.png">
+    <p align=left>
+    <button id="getProductsButton" style="background-color: #474A51; margin-color: #2F353B; border-color: #2F353B; ">
+        <img src="knop1.png">
+    </button>
+    </p>
+
+    <ul id="productsList"></ul>
+    
+    <script>
+    document.getElementById('getProductsButton').addEventListener('click', function() {
+        fetch('/get_products_from_db/') // Обратите внимание на URL, который должен соответствовать вашему Django URL маршруту
+            .then(response => response.json())
+            .then(data => {
+                let productsList = document.getElementById('productsList');
+                productsList.innerHTML = ''; // Очистить список перед добавлением новых данных
+                data.forEach(product => {
+                    let listItem = document.createElement('li');
+                    listItem.textContent = Название: ${title}, Размер: ${razmer}, Стоимость: ${price};
+                    productsList.appendChild(listItem);
+                });
+            });
+    });
+    </script>
+
+    <hr noshade color=A2ADD0>
+    <p algin=center> <img src="title2.png"> </p>
+    <p algin=left>
+        <text>
+            <tt>
+                <font size="5">
+                    <font color="#F5F5F5">
+                        Компания ориентирована на гиков, и людей из IT сферы, представленная одежда мягкая, приятная на ощупь, удобная для того чтобы несколько часов подряд сидеть за компьютером, работая или играя в игры.
+                        Ассортимент в основном представлен в виде худи, кофт, свитеров, пижамы, штанов и прочей одежды.
+                        Так же представлены различные аксессуары и прочие товары: чехлы для телефонов, повязки, подушки для шеи, мягкие игрушки и мини-фигурки с маскотом компании.
+                    </font>
+                </font>
+            </tt>
+        </text>
+    </p>
+</body>
+
+</html>
